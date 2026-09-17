@@ -1,0 +1,264 @@
+{
+  "intent_metrics": {
+    "accuracy": 0.875,
+    "macro_f1": 0.8308,
+    "weighted_f1": 0.8852,
+    "per_intent": {
+      "DELIVERY_STATUS_AND_TRACKING": {
+        "precision": 0.9545,
+        "recall": 0.8571,
+        "f1": 0.9032,
+        "support": 49
+      },
+      "RETURN_REFUND_AND_REPLACEMENT": {
+        "precision": 0.9412,
+        "recall": 0.9412,
+        "f1": 0.9412,
+        "support": 34
+      },
+      "CANCELLATION_AND_ORDER_MODIFICATION": {
+        "precision": 1.0,
+        "recall": 0.9167,
+        "f1": 0.9565,
+        "support": 12
+      },
+      "PAYMENT_BILLING_AND_PROMOTIONS": {
+        "precision": 0.8889,
+        "recall": 0.9412,
+        "f1": 0.9143,
+        "support": 17
+      },
+      "ACCOUNT_ACCESS_AND_SECURITY": {
+        "precision": 0.9444,
+        "recall": 0.8095,
+        "f1": 0.8718,
+        "support": 21
+      },
+      "PRIME_MEMBERSHIP_AND_BENEFITS": {
+        "precision": 0.5294,
+        "recall": 0.8182,
+        "f1": 0.6429,
+        "support": 11
+      },
+      "PRODUCT_CONDITION_AND_WRONG_ITEM": {
+        "precision": 0.8889,
+        "recall": 0.96,
+        "f1": 0.9231,
+        "support": 25
+      },
+      "TECHNICAL_AND_DIGITAL_SUPPORT": {
+        "precision": 1.0,
+        "recall": 0.8235,
+        "f1": 0.9032,
+        "support": 17
+      },
+      "POLICY_AND_GENERAL_INQUIRIES": {
+        "precision": 1.0,
+        "recall": 0.7,
+        "f1": 0.8235,
+        "support": 10
+      },
+      "OTHER_OR_UNCLEAR": {
+        "precision": 0.3,
+        "recall": 0.75,
+        "f1": 0.4286,
+        "support": 4
+      }
+    },
+    "confusion_matrix": [
+      [
+        42,
+        1,
+        0,
+        0,
+        0,
+        5,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        32,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        16,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        2,
+        17,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        14,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        3
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ],
+    "labels": [
+      "DELIVERY_STATUS_AND_TRACKING",
+      "RETURN_REFUND_AND_REPLACEMENT",
+      "CANCELLATION_AND_ORDER_MODIFICATION",
+      "PAYMENT_BILLING_AND_PROMOTIONS",
+      "ACCOUNT_ACCESS_AND_SECURITY",
+      "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "PRODUCT_CONDITION_AND_WRONG_ITEM",
+      "TECHNICAL_AND_DIGITAL_SUPPORT",
+      "POLICY_AND_GENERAL_INQUIRIES",
+      "OTHER_OR_UNCLEAR"
+    ]
+  },
+  "confidence_distribution": {
+    "mean": 0.8385,
+    "median": 0.9315,
+    "min": 0.3135,
+    "max": 1.0
+  },
+  "low_confidence_count": 7,
+  "low_confidence_examples": [
+    {
+      "checkpoint_id": "chk_AmazonHelp_2899622_turn2",
+      "customer_message": "@115850 @AmazonHelp @4030 They can,'t assist.. keep the amount. Let me aware the people or tell them about your fraud policy. You are just cheating the people and use their money. 9929029996 This is my contact no. Let me assist if u can.",
+      "expected_intent": "POLICY_AND_GENERAL_INQUIRIES",
+      "predicted_intent": "POLICY_AND_GENERAL_INQUIRIES",
+      "confidence": 0.3135
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2850664_turn2",
+      "customer_message": "@AmazonHelp It's everything I try and order! Why am I charged for prime when you can't fulfil your part of agreement? Should report you to trading standards! All this money all year for piss poor service!",
+      "expected_intent": "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "predicted_intent": "OTHER_OR_UNCLEAR",
+      "confidence": 0.3158
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2909234_turn5",
+      "customer_message": "@AmazonHelp My wife has just gotten off the phone with a rep that was nice enough to call her back. She also explained to them how egregious the delivery diver's behavior has been for the whole neighborhood. I am beyond shocked at how many packages were just lazily dropped at the wrong place",
+      "expected_intent": "DELIVERY_STATUS_AND_TRACKING",
+      "predicted_intent": "DELIVERY_STATUS_AND_TRACKING",
+      "confidence": 0.3477
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2910334_turn1",
+      "customer_message": "@AmazonHelp I pay for Prime and I was charged for this item a week ago. Screenshot shows the last update on the tracker. I spoke with a support person yesterday - they said it would arrive by today. I'm very disappointed. Is there a point in Prime anymore? https://t.co/0wSQTQJr8f",
+      "expected_intent": "PAYMENT_BILLING_AND_PROMOTIONS",
+      "predicted_intent": "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "confidence": 0.3291
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2238658_turn1",
+      "customer_message": "@115850 @119625 what is this? I am not able to cast any video using my android device and Google Chromecast? Your cc team is saying that you guys are upgrading your application. I think you guys are cheating and trying to sell your fire TV deliberately.",
+      "expected_intent": "TECHNICAL_AND_DIGITAL_SUPPORT",
+      "predicted_intent": "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "confidence": 0.3471
+    }
+  ],
+  "performance_by_difficulty": {
+    "easy": {
+      "count": 49,
+      "accuracy": 0.898,
+      "macro_f1": 0.8243
+    },
+    "medium": {
+      "count": 91,
+      "accuracy": 0.8791,
+      "macro_f1": 0.7669
+    },
+    "hard": {
+      "count": 60,
+      "accuracy": 0.85,
+      "macro_f1": 0.6516
+    }
+  }
+}

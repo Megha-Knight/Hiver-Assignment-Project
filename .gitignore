@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments & virtualenvs
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Data directories (raw & large intermediate pre-processed files)
+data/raw/*.csv
+data/processed/*.jsonl
+data/processed/*.parquet
+data/processed/*.csv
+
+# Results & temporary files
+results/*.tmp
+results/analysis/*.json
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+.vscode/

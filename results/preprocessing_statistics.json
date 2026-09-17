@@ -1,0 +1,58 @@
+{
+  "brand": "AmazonHelp",
+  "total_reconstructed_conversations": 85087,
+  "total_tweets_in_conversations": 358973,
+  "validation_statistics": {
+    "valid_conversations_count": 85086,
+    "invalid_conversations_count": 1,
+    "consecutive_duplicate_text_count": 100,
+    "impossible_role_sequence_count": 1,
+    "missing_text_count": 0,
+    "duplicate_tweet_id_count": 0,
+    "timestamp_order_error_count": 0,
+    "broken_link_count": 13089,
+    "cycle_count": 7735,
+    "rejection_reasons_summary": {
+      "consecutive": 109,
+      "invalid": 1
+    }
+  },
+  "language_filtering_statistics": {
+    "english_count": 63493,
+    "non_english_count": 14540,
+    "uncertain_count": 7054,
+    "english_pct": 74.62,
+    "confidence_distribution": {
+      "0.90_1.00": 76889,
+      "0.80_0.90": 1144,
+      "0.70_0.80": 525,
+      "below_0.70": 6529
+    },
+    "top_detected_non_english_languages": {
+      "es": 4418,
+      "fr": 3363,
+      "de": 2552,
+      "pt": 1726,
+      "ja": 1283,
+      "it": 829,
+      "nl": 42,
+      "hi": 37
+    }
+  },
+  "tier_counts": {
+    "exploration_dataset_count": 63493,
+    "retrieval_candidates_count": 63493,
+    "pristine_candidates_count": 53637
+  },
+  "multipart_grouping_statistics": {
+    "total_grouped_turns": 12664,
+    "conversations_with_grouped_turns": 10461,
+    "pct_conversations_with_grouping": 12.29
+  },
+  "resolution_status_statistics": {
+    "UNKNOWN": 63344,
+    "UNRESOLVED": 14616,
+    "APPARENTLY_RESOLVED": 5858,
+    "HANDOFF_OR_DM": 1269
+  }
+}

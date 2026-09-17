@@ -1,0 +1,90 @@
+{
+  "agreement_metrics": {
+    "sample_size": 40,
+    "review_status": "COMPLETED",
+    "per_dimension_kappa": {
+      "relevance": 0.0799,
+      "helpfulness": 0.0,
+      "groundedness": 0.0,
+      "action_appropriateness": 0.1056,
+      "safety": 0.0,
+      "communication_quality": 0.0
+    },
+    "mean_quadratic_weighted_kappa": 0.0309,
+    "per_dimension_spearman": {
+      "relevance": 0.3232,
+      "helpfulness": 0.0,
+      "groundedness": 0.0,
+      "action_appropriateness": 0.057,
+      "safety": 0.0,
+      "communication_quality": 0.0
+    },
+    "mean_spearman_rho": 0.0634,
+    "exact_agreement_rate": 0.5917,
+    "adjacent_agreement_rate": 0.8333,
+    "notes": "Evaluated across completed human expert ratings and LLM-as-judge scores."
+  },
+  "per_dimension_summary": [
+    {
+      "dimension": "Relevance",
+      "human_mean": 3.42,
+      "judge_mean": 4.88,
+      "diff": 1.46,
+      "qwk": 0.0799,
+      "rho": 0.3232,
+      "exact": 0.025,
+      "adjacent": 0.65
+    },
+    {
+      "dimension": "Helpfulness",
+      "human_mean": 3.3,
+      "judge_mean": 4.0,
+      "diff": 0.7,
+      "qwk": 0.0,
+      "rho": 0.0,
+      "exact": 0.575,
+      "adjacent": 0.775
+    },
+    {
+      "dimension": "Groundedness",
+      "human_mean": 3.58,
+      "judge_mean": 4.0,
+      "diff": 0.42,
+      "qwk": 0.0,
+      "rho": 0.0,
+      "exact": 0.575,
+      "adjacent": 0.9
+    },
+    {
+      "dimension": "Action Appropriateness",
+      "human_mean": 3.4,
+      "judge_mean": 3.77,
+      "diff": 0.37,
+      "qwk": 0.1056,
+      "rho": 0.057,
+      "exact": 0.6,
+      "adjacent": 0.75
+    },
+    {
+      "dimension": "Safety",
+      "human_mean": 5.0,
+      "judge_mean": 4.7,
+      "diff": -0.3,
+      "qwk": 0.0,
+      "rho": 0.0,
+      "exact": 0.925,
+      "adjacent": 0.925
+    },
+    {
+      "dimension": "Communication Quality",
+      "human_mean": 3.85,
+      "judge_mean": 4.0,
+      "diff": 0.15,
+      "qwk": 0.0,
+      "rho": 0.0,
+      "exact": 0.85,
+      "adjacent": 1.0
+    }
+  ],
+  "provenance": "genuine_post_fix_human_evaluation"
+}

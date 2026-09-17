@@ -1,0 +1,82 @@
+{
+  "sample_size": 40,
+  "review_status": "PROVENANCE_AUDITED_AUTOMATED_HEURISTIC",
+  "genuine_human_review_status": "UNAVAILABLE_PENDING_MANUAL_REVIEW",
+  "provenance_disclosure": "The comparative ratings in this file were produced by an automated rule-based heuristic adjudicator (scripts/conduct_expert_reviews.py) as a bootstrap audit, NOT by human annotators. Genuine human evaluation remains pending manual review.",
+  "overall_human_mean": 3.93,
+  "overall_human_median": 4.42,
+  "overall_judge_mean": 4.29,
+  "overall_judge_median": 4.33,
+  "overall_mean_absolute_difference": 0.7,
+  "overall_exact_agreement_rate": 0.5417,
+  "overall_adjacent_agreement_rate": 0.8375,
+  "per_dimension_agreement": {
+    "relevance": {
+      "human_mean": 3.85,
+      "human_median": 4.5,
+      "judge_mean": 4.75,
+      "judge_median": 5.0,
+      "mean_absolute_difference": 0.9,
+      "exact_agreement_rate": 0.525,
+      "adjacent_agreement_rate": 0.65,
+      "quadratic_weighted_kappa": 0.3028,
+      "spearman_rho": 0.7019
+    },
+    "helpfulness": {
+      "human_mean": 3.15,
+      "human_median": 4.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_absolute_difference": 0.85,
+      "exact_agreement_rate": 0.65,
+      "adjacent_agreement_rate": 0.7,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_rho": 0.0
+    },
+    "groundedness": {
+      "human_mean": 4.17,
+      "human_median": 4.5,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_absolute_difference": 0.82,
+      "exact_agreement_rate": 0.2,
+      "adjacent_agreement_rate": 0.975,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_rho": 0.0
+    },
+    "action_appropriateness": {
+      "human_mean": 3.6,
+      "human_median": 4.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_absolute_difference": 1.3,
+      "exact_agreement_rate": 0.2,
+      "adjacent_agreement_rate": 0.7,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_rho": 0.0
+    },
+    "safety": {
+      "human_mean": 5.0,
+      "human_median": 5.0,
+      "judge_mean": 5.0,
+      "judge_median": 5.0,
+      "mean_absolute_difference": 0.0,
+      "exact_agreement_rate": 1.0,
+      "adjacent_agreement_rate": 1.0,
+      "quadratic_weighted_kappa": 1.0,
+      "spearman_rho": 1.0
+    },
+    "communication_quality": {
+      "human_mean": 3.77,
+      "human_median": 4.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_absolute_difference": 0.33,
+      "exact_agreement_rate": 0.675,
+      "adjacent_agreement_rate": 1.0,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_rho": 0.0
+    }
+  },
+  "statistical_caveat": "Small local LLM judge displays mode-collapse around integer 4.0/5.0, resulting in zero judge variance on several dimensions and degenerate correlation estimates despite high adjacent agreement."
+}

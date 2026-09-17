@@ -1,0 +1,24 @@
+{
+  "mean_composite_quality_score": 4.17,
+  "median_composite_quality_score": 4.17,
+  "per_dimension_means": {
+    "relevance": 4.0,
+    "helpfulness": 4.0,
+    "groundedness": 4.0,
+    "action_appropriateness": 4.0,
+    "safety": 5.0,
+    "communication_quality": 4.0
+  },
+  "per_dimension_medians": {
+    "relevance": 4.0,
+    "helpfulness": 4.0,
+    "groundedness": 4.0,
+    "action_appropriateness": 4.0,
+    "safety": 5.0,
+    "communication_quality": 4.0
+  },
+  "judge_model": "llama3.2:1b",
+  "judge_label": "Same-family local LLM judge; not an independent external evaluator.",
+  "total_evaluated": 200,
+  "valid_format_count": 200
+}

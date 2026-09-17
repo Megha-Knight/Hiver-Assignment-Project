@@ -1,0 +1,224 @@
+{
+  "majority_intent_predicted": "DELIVERY_STATUS_AND_TRACKING",
+  "intent_metrics": {
+    "accuracy": 0.245,
+    "macro_f1": 0.0394,
+    "weighted_f1": 0.0964,
+    "per_intent": {
+      "DELIVERY_STATUS_AND_TRACKING": {
+        "precision": 0.245,
+        "recall": 1.0,
+        "f1": 0.3936,
+        "support": 49
+      },
+      "RETURN_REFUND_AND_REPLACEMENT": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 34
+      },
+      "CANCELLATION_AND_ORDER_MODIFICATION": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12
+      },
+      "PAYMENT_BILLING_AND_PROMOTIONS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 17
+      },
+      "ACCOUNT_ACCESS_AND_SECURITY": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 21
+      },
+      "PRIME_MEMBERSHIP_AND_BENEFITS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 11
+      },
+      "PRODUCT_CONDITION_AND_WRONG_ITEM": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 25
+      },
+      "TECHNICAL_AND_DIGITAL_SUPPORT": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 17
+      },
+      "POLICY_AND_GENERAL_INQUIRIES": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 10
+      },
+      "OTHER_OR_UNCLEAR": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4
+      }
+    },
+    "confusion_matrix": [
+      [
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        34,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        17,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        21,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        25,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        17,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "labels": [
+      "DELIVERY_STATUS_AND_TRACKING",
+      "RETURN_REFUND_AND_REPLACEMENT",
+      "CANCELLATION_AND_ORDER_MODIFICATION",
+      "PAYMENT_BILLING_AND_PROMOTIONS",
+      "ACCOUNT_ACCESS_AND_SECURITY",
+      "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "PRODUCT_CONDITION_AND_WRONG_ITEM",
+      "TECHNICAL_AND_DIGITAL_SUPPORT",
+      "POLICY_AND_GENERAL_INQUIRIES",
+      "OTHER_OR_UNCLEAR"
+    ]
+  },
+  "escalation_never_escalate": {
+    "true_positives": 0,
+    "false_positives": 0,
+    "false_negatives": 45,
+    "true_negatives": 155,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_auto_handle_rate": 1.0
+  },
+  "escalation_always_escalate": {
+    "true_positives": 45,
+    "false_positives": 155,
+    "false_negatives": 0,
+    "true_negatives": 0,
+    "precision": 0.225,
+    "recall": 1.0,
+    "f1": 0.3673,
+    "false_auto_handle_rate": 0.0
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "phase": 3,
+  "retrieval_corpus_statistics": {
+    "total_train_conversations": 42909,
+    "retrieval_corpus_size": 5502,
+    "survival_rate_pct": 12.82,
+    "total_excluded": 37407,
+    "exclusion_reasons": {
+      "lacks_actionable_resolution_evidence": 30639,
+      "unresolved_complaint_or_rant": 6768
+    },
+    "outcome_evidence_breakdown": {
+      "CONFIRMED_RESOLUTION": 3806,
+      "OFFICIAL_HANDOFF": 1018,
+      "POLICY_GUIDANCE": 461,
+      "TROUBLESHOOTING_STEPS": 217
+    },
+    "resolution_status_breakdown": {
+      "APPARENTLY_RESOLVED": 3806,
+      "UNKNOWN": 900,
+      "HANDOFF_OR_DM": 796
+    },
+    "average_turn_count": 5.12
+  },
+  "vector_index_statistics": {
+    "model_name": "SentenceTransformer(all-MiniLM-L6-v2)",
+    "dimension": 384,
+    "indexed_documents": 5502,
+    "index_file_size_bytes": 7837725
+  },
+  "build_duration_seconds": 7126.83
+}

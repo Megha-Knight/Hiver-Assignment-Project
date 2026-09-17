@@ -1,0 +1,11 @@
+{
+  "evidence_supported_response_rate": 0.995,
+  "grounded_count": 199,
+  "unsupported_capability_count": 0,
+  "unsupported_policy_count": 0,
+  "contradiction_count": 0,
+  "evidence_support_distribution": {
+    "PARTIAL": 199,
+    "UNSUPPORTED": 1
+  }
+}

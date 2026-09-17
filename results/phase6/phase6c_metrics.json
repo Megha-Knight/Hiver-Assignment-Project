@@ -1,0 +1,133 @@
+{
+  "timestamp_utc": "2026-09-16T04:40:04.628636+00:00",
+  "model_name": "llama3.2:1b",
+  "primary_top_k": 5,
+  "total_checkpoints_evaluated": 200,
+  "intent_metrics": {
+    "accuracy": 0.86,
+    "macro_f1": 0.8073,
+    "per_intent_f1": {
+      "DELIVERY_STATUS_AND_TRACKING": 0.9032,
+      "RETURN_REFUND_AND_REPLACEMENT": 0.9254,
+      "CANCELLATION_AND_ORDER_MODIFICATION": 0.9565,
+      "PAYMENT_BILLING_AND_PROMOTIONS": 0.9143,
+      "ACCOUNT_ACCESS_AND_SECURITY": 0.8095,
+      "PRIME_MEMBERSHIP_AND_BENEFITS": 0.6429,
+      "PRODUCT_CONDITION_AND_WRONG_ITEM": 0.9231,
+      "TECHNICAL_AND_DIGITAL_SUPPORT": 0.9032,
+      "POLICY_AND_GENERAL_INQUIRIES": 0.6667,
+      "OTHER_OR_UNCLEAR": 0.4286
+    }
+  },
+  "state_metrics": {
+    "accuracy": 0.775,
+    "macro_f1": 0.4004
+  },
+  "action_metrics": {
+    "accuracy": 0.675,
+    "macro_f1": 0.4873
+  },
+  "escalation_metrics": {
+    "precision": 0.4545,
+    "recall": 0.3333,
+    "f1": 0.3846,
+    "false_auto_handle_rate": 0.6667
+  },
+  "exact_match_metrics": {
+    "total_checkpoints": 200,
+    "exact_match_all_count": 77,
+    "exact_match_all_rate": 0.385,
+    "by_difficulty": {
+      "easy": {
+        "total": 49,
+        "exact_matches": 19,
+        "exact_match_rate": 0.3878
+      },
+      "medium": {
+        "total": 91,
+        "exact_matches": 45,
+        "exact_match_rate": 0.4945
+      },
+      "hard": {
+        "total": 60,
+        "exact_matches": 13,
+        "exact_match_rate": 0.2167
+      }
+    }
+  },
+  "retrieval_metrics": {
+    "top_1_similarity_mean": 0.7098,
+    "top_1_similarity_median": 0.7183,
+    "top_1_similarity_max": 0.9043,
+    "top_1_similarity_min": 0.4934,
+    "top_k_mean_similarity": 0.6813,
+    "retrieval_coverage_ge_50": 0.995,
+    "confidence_tier_distribution": {
+      "high_ge_70": 121,
+      "medium_50_to_70": 78,
+      "low_lt_50": 1
+    }
+  },
+  "retrieval_help_harm_analysis": {
+    "retrieval_helped_count": 0,
+    "retrieval_helped_rate": 0.0,
+    "retrieval_harmed_count": 61,
+    "retrieval_harmed_rate": 0.305,
+    "retrieval_neutral_count": 139,
+    "retrieval_neutral_rate": 0.695
+  },
+  "safety_and_quality_metrics": {
+    "unsupported_actions_count": 0,
+    "unsupported_action_rate": 0.0,
+    "safety_violations_count": 0,
+    "valid_json_rate": 1.0,
+    "schema_compliance_rate": 1.0,
+    "truncation_count": 0,
+    "truncation_rate": 0.0,
+    "average_raw_response_length": 105.8,
+    "average_final_response_length": 105.8
+  },
+  "latency_metrics": {
+    "retrieval_mean_ms": 72.86,
+    "prompt_mean_ms": 0.1,
+    "llm_mean_ms": 0.54,
+    "validation_mean_ms": 0.3,
+    "total_mean_ms": 73.82,
+    "total_median_ms": 66.35,
+    "total_p95_ms": 121.43
+  },
+  "k_ablation": {
+    "K=3": {
+      "intent_acc": 0.86,
+      "state_acc": 0.775,
+      "action_acc": 0.675,
+      "esc_f1": 0.3846,
+      "exact_match": 0.385,
+      "latency_ms": 72.03
+    },
+    "K=5": {
+      "intent_acc": 0.86,
+      "state_acc": 0.775,
+      "action_acc": 0.675,
+      "esc_f1": 0.3846,
+      "exact_match": 0.385,
+      "latency_ms": 73.82
+    },
+    "K=10": {
+      "intent_acc": 0.86,
+      "state_acc": 0.775,
+      "action_acc": 0.675,
+      "esc_f1": 0.3846,
+      "exact_match": 0.385,
+      "latency_ms": 72.77
+    },
+    "No-Retrieval (K=0)": {
+      "intent_acc": 0.6,
+      "state_acc": 0.575,
+      "action_acc": 0.255,
+      "esc_f1": 0.2222,
+      "exact_match": 0.195,
+      "latency_ms": 0.23
+    }
+  }
+}

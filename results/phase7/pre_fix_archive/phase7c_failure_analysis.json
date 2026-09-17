@@ -1,0 +1,298 @@
+{
+  "total_checkpoints_evaluated": 200,
+  "total_failures_recorded": 214,
+  "bucket_frequencies": {
+    "WRONG_INTENT": 28,
+    "WRONG_ACTION": 65,
+    "WRONG_STATE": 45,
+    "ESCALATION_MISS": 30,
+    "WEAK_EVIDENCE_GROUNDING": 1,
+    "RETRIEVAL_FAILURE": 1,
+    "FALSE_ESCALATION": 18,
+    "MULTI_ISSUE_CONVERSATION": 26
+  },
+  "sample_failures": {
+    "WRONG_INTENT": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_437905_turn1",
+        "customer_message": "What is the point of having a #prime membership , if you haven't received your product even after 3 days from ordering it ? \n#Amazon #AmazonPrime @115850",
+        "gold": {
+          "intent": "DELIVERY_STATUS_AND_TRACKING",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "EMPATHIZE_AND_DEESCALATE",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "PRIME_MEMBERSHIP_AND_BENEFITS",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "EMPATHIZE_AND_DEESCALATE",
+          "escalate": true
+        },
+        "response": "We deeply understand how frustrating this delay is. Please reach out via DM so we can assist you right away.",
+        "top_1_similarity": 0.7687,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_2830681_turn1",
+        "customer_message": "@AmazonHelp @115821 is this legit???? Do I or do I not need change bank details? https://t.co/uvZcysHRPh",
+        "gold": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "PAYMENT_BILLING_AND_PROMOTIONS",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.673,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "WRONG_ACTION": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_437932_turn1",
+        "customer_message": "One of the worst experience of selling on @115850. Item dispatched on 2nd November, rejected by buyer on 5th and for next 3 weeks nobody is aware where the hell returned package is. Lost my one month following up and lost so many buyers who will bear the cost of lost time?",
+        "gold": {
+          "intent": "DELIVERY_STATUS_AND_TRACKING",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "REQUEST_SAFE_DETAILS",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "DELIVERY_STATUS_AND_TRACKING",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "CONFIRM_RESOLUTION",
+          "escalate": false
+        },
+        "response": "We are glad to hear your issue has been resolved! Please let us know if you need any further assistance.",
+        "top_1_similarity": 0.7076,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_2902514_turn1",
+        "customer_message": "@AmazonHelp hi trying to set up a kindle fire with my existing amazon ac not working and despite me asking for password reset it getting any reset emails",
+        "gold": {
+          "intent": "TECHNICAL_AND_DIGITAL_SUPPORT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "PROVIDE_TROUBLESHOOTING",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.7281,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "WRONG_STATE": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2894680_turn1",
+        "customer_message": "@115821 @115830 is a joke! I have cancelled an order (that I diddnt even buy) I was assured a refund, I haven\u2019t got my refund or the delivery that cost 40 pound are you having a laugh! You\u2019ve literally just taken 40 pound out my wallet and given nothing back! Useless",
+        "gold": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.7405,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_2902514_turn1",
+        "customer_message": "@AmazonHelp hi trying to set up a kindle fire with my existing amazon ac not working and despite me asking for password reset it getting any reset emails",
+        "gold": {
+          "intent": "TECHNICAL_AND_DIGITAL_SUPPORT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "PROVIDE_TROUBLESHOOTING",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.7281,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "ESCALATION_MISS": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2906588_turn1",
+        "customer_message": "@AmazonHelp your Amazon Logistics driver left my delivery outside in the pouring rain! It is now completely ruined, how do I return, get a refund and make a formal complaint please? Not the first time this has happened either, sick of wasting my money on Prime",
+        "gold": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": false
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.6812,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_5119_turn2",
+        "customer_message": "@AmazonHelp I would like it replaced not refunded. But the sale is over, and doesn\u2019t look like you have it in stock at the site. What are my other options?",
+        "gold": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_CUSTOMER_PROVIDING_INFO",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "RETURN_REFUND_AND_REPLACEMENT",
+          "state": "STATE_CUSTOMER_PROVIDING_INFO",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": false
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.6895,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "WEAK_EVIDENCE_GROUNDING": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2881896_turn1",
+        "customer_message": "@115850 My friend received an expired deo. Look at the rusted bottle neck! Thanks to your customer support, he has now been hassled to the maximum as he struggles to return it! @115851 Is this what @115821 stands for? #FakeAmazon https://t.co/pVJ8z4Zp6n",
+        "gold": {
+          "intent": "PRODUCT_CONDITION_AND_WRONG_ITEM",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "REQUEST_SAFE_DETAILS",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "PRODUCT_CONDITION_AND_WRONG_ITEM",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "REQUEST_SAFE_DETAILS",
+          "escalate": false
+        },
+        "response": "We would like to help look into this! Please reply with your postal code or carrier name so we can check tracking.",
+        "top_1_similarity": 0.4934,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "RETRIEVAL_FAILURE": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2881896_turn1",
+        "customer_message": "@115850 My friend received an expired deo. Look at the rusted bottle neck! Thanks to your customer support, he has now been hassled to the maximum as he struggles to return it! @115851 Is this what @115821 stands for? #FakeAmazon https://t.co/pVJ8z4Zp6n",
+        "gold": {
+          "intent": "PRODUCT_CONDITION_AND_WRONG_ITEM",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "REQUEST_SAFE_DETAILS",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "PRODUCT_CONDITION_AND_WRONG_ITEM",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "REQUEST_SAFE_DETAILS",
+          "escalate": false
+        },
+        "response": "We would like to help look into this! Please reply with your postal code or carrier name so we can check tracking.",
+        "top_1_similarity": 0.4934,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "FALSE_ESCALATION": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2902514_turn1",
+        "customer_message": "@AmazonHelp hi trying to set up a kindle fire with my existing amazon ac not working and despite me asking for password reset it getting any reset emails",
+        "gold": {
+          "intent": "TECHNICAL_AND_DIGITAL_SUPPORT",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "PROVIDE_TROUBLESHOOTING",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.7281,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_2901053_turn1",
+        "customer_message": "@AmazonHelp I got an email that there was an attempt to connect to my account and I was provided with a security code to use, I changed my password to secure my account but when ever I am trying to sign in using my new or old password I can not sign in to my account please advice",
+        "gold": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_INITIAL_INBOUND",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.8161,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ],
+    "MULTI_ISSUE_CONVERSATION": [
+      {
+        "checkpoint_id": "chk_AmazonHelp_2899622_turn2",
+        "customer_message": "@115850 @AmazonHelp @4030 They can,'t assist.. keep the amount. Let me aware the people or tell them about your fraud policy. You are just cheating the people and use their money. 9929029996 This is my contact no. Let me assist if u can.",
+        "gold": {
+          "intent": "POLICY_AND_GENERAL_INQUIRIES",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "EMPATHIZE_AND_DEESCALATE",
+          "escalate": true
+        },
+        "prediction": {
+          "intent": "ACCOUNT_ACCESS_AND_SECURITY",
+          "state": "STATE_CUSTOMER_ESCALATION",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": true
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.6215,
+        "grounding": "Response is well-grounded in historical support protocol."
+      },
+      {
+        "checkpoint_id": "chk_AmazonHelp_2871589_turn2",
+        "customer_message": "@AmazonHelp @797330 This also happens to me. Please invest some time into training your employees.",
+        "gold": {
+          "intent": "OTHER_OR_UNCLEAR",
+          "state": "STATE_CUSTOMER_PROVIDING_INFO",
+          "action": "ASK_CLARIFICATION",
+          "escalate": false
+        },
+        "prediction": {
+          "intent": "DELIVERY_STATUS_AND_TRACKING",
+          "state": "STATE_CUSTOMER_PROVIDING_INFO",
+          "action": "HANDOFF_TO_SECURE_CHANNEL",
+          "escalate": false
+        },
+        "response": "We apologize for the issue! Please send us a direct message (DM) with your details so we can investigate.",
+        "top_1_similarity": 0.7597,
+        "grounding": "Response is well-grounded in historical support protocol."
+      }
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+Brand,Total Tweets,Customer Inbound,Support Responses,Reconstructable Conversations,Avg Conversation Length,Median Conversation Length,Conversations >= 3 Turns (%),Conversations >= 5 Turns (%),Template Response Rate (%),Broken Link Rate (%)
+AmazonHelp,358973,189133,169840,85087,4.22,3.0,59.6,28.33,14.96,15.38
+AppleSupport,226755,119895,106860,81481,2.78,2.0,29.41,9.4,26.54,16.49
+Uber_Support,122194,65924,56270,42757,2.86,2.0,32.3,10.42,67.95,13.24
+SpotifyCares,88445,45180,43265,29485,3.0,2.0,32.08,12.85,32.25,14.06

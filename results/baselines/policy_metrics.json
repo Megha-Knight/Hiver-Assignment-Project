@@ -1,0 +1,176 @@
+{
+  "escalation_metrics": {
+    "true_positives": 11,
+    "false_positives": 3,
+    "false_negatives": 34,
+    "true_negatives": 152,
+    "precision": 0.7857,
+    "recall": 0.2444,
+    "f1": 0.3729,
+    "false_auto_handle_rate": 0.7556
+  },
+  "state_metrics": {
+    "accuracy": 0.895,
+    "macro_f1": 0.4839,
+    "per_state": {
+      "STATE_INITIAL_INBOUND": {
+        "support": 122,
+        "accuracy": 0.9918
+      },
+      "STATE_CUSTOMER_PROVIDING_INFO": {
+        "support": 40,
+        "accuracy": 1.0
+      },
+      "STATE_TROUBLESHOOTING_ACTIVE": {
+        "support": 19,
+        "accuracy": 0.4737
+      },
+      "STATE_CUSTOMER_ESCALATION": {
+        "support": 14,
+        "accuracy": 0.3571
+      },
+      "STATE_APPARENTLY_RESOLVED": {
+        "support": 5,
+        "accuracy": 0.8
+      }
+    }
+  },
+  "action_metrics": {
+    "accuracy": 0.885,
+    "macro_f1": 0.8017,
+    "per_action": {
+      "PROVIDE_INFORMATION": {
+        "support": 10,
+        "accuracy": 0.7
+      },
+      "ASK_CLARIFICATION": {
+        "support": 13,
+        "accuracy": 0.9231
+      },
+      "REQUEST_SAFE_DETAILS": {
+        "support": 41,
+        "accuracy": 0.9512
+      },
+      "PROVIDE_TROUBLESHOOTING": {
+        "support": 16,
+        "accuracy": 0.875
+      },
+      "OFFER_NEXT_STEP": {
+        "support": 8,
+        "accuracy": 0.875
+      },
+      "HANDOFF_TO_SECURE_CHANNEL": {
+        "support": 93,
+        "accuracy": 0.957
+      },
+      "EMPATHIZE_AND_DEESCALATE": {
+        "support": 14,
+        "accuracy": 0.3571
+      },
+      "CONFIRM_RESOLUTION": {
+        "support": 5,
+        "accuracy": 0.8
+      }
+    }
+  },
+  "exact_match_metrics": {
+    "total_checkpoints": 200,
+    "intent_match_rate": 0.875,
+    "state_match_rate": 0.895,
+    "action_match_rate": 0.885,
+    "escalation_match_rate": 0.815,
+    "exact_match_all_rate": 0.69,
+    "exact_matches_count": 138,
+    "by_difficulty": {
+      "easy": {
+        "total": 49,
+        "exact_matches": 44,
+        "exact_match_rate": 0.898
+      },
+      "medium": {
+        "total": 91,
+        "exact_matches": 74,
+        "exact_match_rate": 0.8132
+      },
+      "hard": {
+        "total": 60,
+        "exact_matches": 20,
+        "exact_match_rate": 0.3333
+      }
+    }
+  },
+  "decisions_sample": [
+    {
+      "checkpoint_id": "chk_AmazonHelp_2894655_turn1",
+      "intent": "PRODUCT_CONDITION_AND_WRONG_ITEM",
+      "intent_confidence": 0.9202389817605977,
+      "state": "STATE_INITIAL_INBOUND",
+      "action": "PROVIDE_INFORMATION",
+      "escalation": false,
+      "escalation_reason": "NONE",
+      "state_transition": {
+        "current_state": "NONE",
+        "trigger_evidence": "First customer message in session",
+        "next_state": "STATE_INITIAL_INBOUND",
+        "transition_reason": "Initiation of customer support inquiry"
+      },
+      "action_reasoning": "Customer is asking for general policy or process information.",
+      "decision_evidence": [
+        "Intent: PRODUCT_CONDITION_AND_WRONG_ITEM (conf: 0.92)",
+        "State: STATE_INITIAL_INBOUND (transition: Initiation of customer support inquiry)",
+        "Escalation: False (NONE)",
+        "Action: PROVIDE_INFORMATION (Customer is asking for general policy or process information.)",
+        "no_escalation_triggers_detected"
+      ],
+      "is_safe": true
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_437905_turn1",
+      "intent": "PRIME_MEMBERSHIP_AND_BENEFITS",
+      "intent_confidence": 0.9971549535833141,
+      "state": "STATE_CUSTOMER_ESCALATION",
+      "action": "EMPATHIZE_AND_DEESCALATE",
+      "escalation": true,
+      "escalation_reason": "REPEATED_FAILED_CONTACT",
+      "state_transition": {
+        "current_state": "STATE_INITIAL_INBOUND",
+        "trigger_evidence": "Initial customer inbound exhibits escalation (REPEATED_FAILED_CONTACT)",
+        "next_state": "STATE_CUSTOMER_ESCALATION",
+        "transition_reason": "Customer initiates conversation with extreme hostility or repeated failure"
+      },
+      "action_reasoning": "Escalation due to REPEATED_FAILED_CONTACT; agent must empathize and calm customer before routing.",
+      "decision_evidence": [
+        "Intent: PRIME_MEMBERSHIP_AND_BENEFITS (conf: 1.00)",
+        "State: STATE_CUSTOMER_ESCALATION (transition: Customer initiates conversation with extreme hostility or repeated failure)",
+        "Escalation: True (REPEATED_FAILED_CONTACT)",
+        "Action: EMPATHIZE_AND_DEESCALATE (Escalation due to REPEATED_FAILED_CONTACT; agent must empathize and calm customer before routing.)",
+        "Repeated contact failure match: 'even after 3 days'"
+      ],
+      "is_safe": true
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1384142_turn1",
+      "intent": "PAYMENT_BILLING_AND_PROMOTIONS",
+      "intent_confidence": 0.9965207711530235,
+      "state": "STATE_INITIAL_INBOUND",
+      "action": "HANDOFF_TO_SECURE_CHANNEL",
+      "escalation": true,
+      "escalation_reason": "PAYMENT_ACCOUNT_DISPUTE",
+      "state_transition": {
+        "current_state": "NONE",
+        "trigger_evidence": "First customer message in session",
+        "next_state": "STATE_INITIAL_INBOUND",
+        "transition_reason": "Initiation of customer support inquiry"
+      },
+      "action_reasoning": "Sensitive escalation trigger (PAYMENT_ACCOUNT_DISPUTE) requires secure transfer.",
+      "decision_evidence": [
+        "Intent: PAYMENT_BILLING_AND_PROMOTIONS (conf: 1.00)",
+        "State: STATE_INITIAL_INBOUND (transition: Initiation of customer support inquiry)",
+        "Escalation: True (PAYMENT_ACCOUNT_DISPUTE)",
+        "Action: HANDOFF_TO_SECURE_CHANNEL (Sensitive escalation trigger (PAYMENT_ACCOUNT_DISPUTE) requires secure transfer.)",
+        "Payment dispute match: 'declined my bank'"
+      ],
+      "is_safe": true
+    }
+  ]
+}
