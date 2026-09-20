@@ -107,10 +107,11 @@ Generated Response: "You can initiate your return by visiting our Returns Center
 ```
 
 **Talking Point**:
-> *"Here is an example of our most common failure mode: `WRONG_ACTION` (65/200 cases). The customer reported a broken link and a UPS dropoff rejection. The agent correctly identified `RETURN_INQUIRY`, but it repeated the canned instruction to visit the Returns Center rather than escalating the technical error. This is why our strict Exact Match is 38.5% and why the heuristic audit scored helpfulness at 3.15/5. We don't hide these failure modes; they guide our engineering roadmap."*
+> *"Here is an example of our most common failure mode: `WRONG_ACTION`. The customer reported a broken link and a UPS dropoff rejection. The agent correctly identified `RETURN_INQUIRY`, but it repeated the canned instruction to visit the Returns Center rather than escalating the technical error. This explains why human helpfulness scored 3.30/5.00 compared to the lenient LLM judge (4.00/5.00). We don't hide these failure modes; they guide our engineering roadmap."*
 
 ---
 
 ## 6. Conclusion & Evaluation Summary (30 Seconds)
 
-> *"To summarize: Across our 200 rule-based pre-annotated checkpoints, the agent delivers 86.00% Intent Accuracy, 0 safety violations, and 99.50% automated evidence grounding, running entirely on local CPU hardware in 1.66 seconds per turn. A rule-based heuristic audit ($N=40$) established a 3.93/5 response quality with 83.8% adjacent agreement to our automated same-family LLM judge (4.29/5), while genuine manual evaluation remains pending. Thank you, and I look forward to your questions!"*
+> *"To summarize: Across our 200 evaluation checkpoints, the agent delivers 86.00% Intent Accuracy, 87.00% Action Accuracy, 0 safety violations, and 82.50% verified evidence-supported responses, running entirely on local CPU hardware in 1.66 seconds per turn. Post-fix genuine human evaluation ($N=40$) established a 3.76/5 response quality with 83.33% adjacent agreement to our secondary diagnostic LLM judge (4.17/5), demonstrating strong conversational safety and calibrated performance. Thank you, and I look forward to your questions!"*
+

@@ -249,10 +249,18 @@ We compare the hybrid agent against two classical baselines on the frozen 200-ch
 
 | Model Architecture | Accuracy | Macro F1 | Weighted F1 | Notes |
 | :--- | :---: | :---: | :---: | :--- |
-| **Majority Classifier** | 24.50% | 3.94% | 9.64% | Predicts dominant class (`DELIVERY_STATUS_AND_TRACKING`) |
-| **TF-IDF + Logistic Regression** | **87.50%** | **83.08%** | **88.52%** | Frozen baseline model (`models/baselines/tfidf_logreg_intent.joblib`) |
+| **Majority Classifier** | 24.50% | 3.94% | 9.64% | Constant trivial baseline (predicts dominant class `DELIVERY_STATUS_AND_TRACKING`) |
+| **TF-IDF + Logistic Regression** | **87.50%** | **83.08%** | **88.52%** | **Trained ML classifier** (`.fit()` training on Train partition, saved artifact `models/baselines/tfidf_logreg_intent.joblib`) |
+
+> [!NOTE]
+> **Model Training vs. Pretrained Inference Distinctions**:
+> - **TF-IDF + Logistic Regression**: The only **trained ML model** in this project, trained via `.fit()` on 70% Train data with learned sparse feature coefficients.
+> - **all-MiniLM-L6-v2**: **Pretrained embedding model** used out-of-the-box for dense retrieval with L2 embedding normalization; **not fine-tuned** by this project.
+> - **llama3.2:1b**: **Pretrained local generative model** prompted in-context with retrieved exemplars and Pydantic schemas; **not trained or fine-tuned** by this project.
+> - **Text Normalization** (regex masking of handles/URLs) is strictly distinguished from **Embedding Normalization** (L2 unit-norm scaling).
 
 ---
+
 
 ## 12. Final Results Scorecard
 
@@ -289,13 +297,14 @@ We conducted genuine human evaluations over a stratified sample ($N=40$; 10 Easy
 
 | Evaluation Dimension | Genuine Human Review ($N=40$) | LLM Judge ($N=40$, `llama3.2:1b`) | Discrepancy & Analysis |
 | :--- | :---: | :---: | :--- |
-| **Relevance** | 3.42 / 5.00 | 4.25 / 5.00 | +0.83 (Judge overlooks customer question nuances) |
-| **Helpfulness** | 3.30 / 5.00 | 4.10 / 5.00 | +0.80 (Human penalizes generic non-resolutions) |
-| **Groundedness** | 3.58 / 5.00 | 4.20 / 5.00 | +0.62 (Judge conflates plausibility with grounding) |
-| **Action Appropriateness** | 3.40 / 5.00 | 4.15 / 5.00 | +0.75 (Judge tolerates suboptimal policy actions) |
-| **Safety Compliance** | **5.00 / 5.00** | **5.00 / 5.00** | 0.00 (Unanimous agreement on zero safety breaches) |
-| **Communication Quality** | 3.85 / 5.00 | 4.30 / 5.00 | +0.45 (Human flags repetitive conversational phrasing) |
+| **Relevance** | 3.42 / 5.00 | 4.88 / 5.00 | +1.46 (Judge substantially lenient on customer question nuances) |
+| **Helpfulness** | 3.30 / 5.00 | 4.00 / 5.00 | +0.70 (Human penalizes generic non-resolutions and deflection) |
+| **Groundedness** | 3.58 / 5.00 | 4.00 / 5.00 | +0.42 (Judge mode-collapses at 4; human flags missing specifics) |
+| **Action Appropriateness** | 3.40 / 5.00 | 3.77 / 5.00 | +0.37 (Human penalizes premature closures and wrong routing) |
+| **Safety Compliance** | **5.00 / 5.00** | **4.70 / 5.00** | -0.30 (Human confirmed 100% safety compliance; 0 leaks) |
+| **Communication Quality** | 3.85 / 5.00 | 4.00 / 5.00 | +0.15 (High agreement on professional Twitter support tone) |
 | **Composite Quality Score** | **3.76 / 5.00** | **4.17 / 5.00** | **+0.41 Leniency Bias in LLM Judge** |
+
 
 ### Agreement Statistics:
 - **Adjacent Agreement (within $\pm 1$ grade)**: **83.33%**

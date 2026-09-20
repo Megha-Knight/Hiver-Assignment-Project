@@ -133,7 +133,8 @@ flowchart TD
 ### Component Details and Precedence:
 
 1. **Intent Classifier (`src/classifier/`)**:
-   - Model: Frozen character/word N-gram TF-IDF vectorizer + Logistic Regression.
+   - Model: **Trained ML classifier** using word and character N-gram TF-IDF vectorizer + Logistic Regression.
+   - Training & Artifact: Underwent actual `.fit()` training on the 70% Train partition, learned explicit feature coefficients across 10 classes, and was serialized as a saved model artifact (`models/baselines/tfidf_logreg_intent.joblib`).
    - Role: Predicts class probabilities across the 10-intent taxonomy in $<3$ ms on CPU.
    - Precedence: Provides the primary anchor for state transitions and action mapping.
 
@@ -143,8 +144,9 @@ flowchart TD
    - Role: Tracks conversation depth and entity disclosures (order numbers, postcodes), preventing illegal state transitions.
 
 3. **Historical Dense Retriever (`src/retrieval/`)**:
-   - Model: `sentence-transformers/all-MiniLM-L6-v2` (384-dimensional normalized embeddings).
-   - Index: Dense cosine similarity search over 5,502 Train-only resolution dialogues ($K=5$).
+   - Model: `sentence-transformers/all-MiniLM-L6-v2` (**pretrained embedding model**, not fine-tuned by this project).
+   - Normalization: Employs **L2 embedding normalization** on 384-dimensional vectors so cosine similarity reduces to fast dot products (distinct from text preprocessing normalization applied to raw tweet strings).
+   - Index: Dense similarity search over 5,502 Train-only resolution dialogues ($K=5$).
    - Role: Retrieves verified representative actions and resolution language to ground response generation.
 
 4. **Action Policy Engine (`src/policy/`)**:
@@ -158,8 +160,9 @@ flowchart TD
      - Lexical Frustration Triggers: Keyword regex for legal threats, regulatory ombudsman mentions, or repeated failed contacts.
 
 6. **Neural Response Synthesis (`src/llm/`)**:
-   - Model: Local `llama3.2:1b` (via Ollama) or offline deterministic mock simulation engine.
-   - Role: Combines conversation history with the top retrieved historical exemplars, synthesizing natural, empathetic customer replies formatted under strict Pydantic JSON schemas.
+   - Model: **Pretrained local generative model** (`llama3.2:1b` via Ollama) or offline deterministic mock simulation engine. **Not trained or fine-tuned by this project**.
+   - Role: Prompted dynamically with conversation history, retrieved historical exemplars, and strict Pydantic JSON schemas to synthesize natural, empathetic customer replies.
+
 
 7. **Deterministic Safety Validator (`src/llm/safety_validator.py`)**:
    - Model: Post-generation rule sanitizer and regex entity extractor.
@@ -250,18 +253,19 @@ We conducted an evaluation comparing $N=40$ genuine, blinded human reviews (stra
 
 | Evaluation Dimension (1–5 Scale) | Genuine Human Review ($N=40$) | Local LLM Judge (`llama3.2:1b`) | Discrepancy (Judge Bias) |
 | :--- | :---: | :---: | :--- |
-| **Relevance** | 3.42 / 5.00 | 4.25 / 5.00 | +0.83 (Judge overlooks customer nuances) |
-| **Helpfulness** | 3.30 / 5.00 | 4.10 / 5.00 | +0.80 (Human penalizes generic non-resolutions) |
-| **Groundedness** | 3.58 / 5.00 | 4.20 / 5.00 | +0.62 (Judge conflates plausibility with grounding) |
-| **Action Appropriateness** | 3.40 / 5.00 | 4.15 / 5.00 | +0.75 (Judge tolerates suboptimal actions) |
-| **Safety Compliance** | **5.00 / 5.00** | **5.00 / 5.00** | 0.00 (Unanimous agreement on zero leaks) |
-| **Communication Quality** | 3.85 / 5.00 | 4.30 / 5.00 | +0.45 (Human flags repetitive phrasing) |
-| **Composite Quality Score** | **3.76 / 5.00** | **4.17 / 5.00** | **+0.41 Leniency Bias** |
+| **Relevance** | 3.42 / 5.00 | 4.88 / 5.00 | +1.46 (Judge substantially lenient on customer question nuances) |
+| **Helpfulness** | 3.30 / 5.00 | 4.00 / 5.00 | +0.70 (Human penalizes generic non-resolutions and deflection) |
+| **Groundedness** | 3.58 / 5.00 | 4.00 / 5.00 | +0.42 (Judge mode-collapses at 4; human flags missing specifics) |
+| **Action Appropriateness** | 3.40 / 5.00 | 3.77 / 5.00 | +0.37 (Human penalizes premature closures and wrong routing) |
+| **Safety Compliance** | **5.00 / 5.00** | **4.70 / 5.00** | -0.30 (Human confirmed 100% safety compliance; 0 leaks) |
+| **Communication Quality** | 3.85 / 5.00 | 4.00 / 5.00 | +0.15 (High agreement on professional Twitter support tone) |
+| **Composite Quality Score** | **3.76 / 5.00** | **4.17 / 5.00** | **+0.41 Leniency Bias in LLM Judge** |
 
 ### Evaluator Agreement Statistics:
 - **Adjacent Agreement ($\pm 1$ grade)**: **83.33%**
 - **Quadratic Weighted Kappa (QWK)**: **0.0309**
 - **Spearman Rank Correlation**: **0.0634**
+
 
 ### Critical Finding on LLM Judges:
 The local `llama3.2:1b` judge is **not an independent evaluator**. It shares model family biases with the response generator and exhibits severe leniency (+0.41 composite inflation) and mode collapse (clustering at integer 4.0). While adjacent agreement is 83.33%, the near-zero rank correlation (Spearman: 0.0634) demonstrates that the automated judge cannot reliably rank-order response quality. The LLM judge must be treated strictly as **secondary and diagnostic**, while the **3.76 / 5.00 human score serves as the authoritative baseline**.
