@@ -127,7 +127,7 @@
 - **Why It Was Chosen**: Safety must be mathematically guaranteed, not probabilistic. If an LLM response solicits a password or claims *"I have refunded your £50"*, the safety validator intercepts the text and forces safe direct-message handoff.
 - **Alternative Considered**: Pre-prompt safety instructions alone; LLM-as-a-judge safety filtering.
 - **Trade-off / Consequence**: Occasionally sanitizes benign responses that mention words like "card" or "verify", forcing generic secure channel routing.
-- **Evidence / Validation**: Evaluated across 200 checkpoints and N=40 human reviews: **0.00% deterministic safety violations, 0 credential breaches, 2 safety overrides applied, 5.00/5.00 human safety score**.
+- **Evidence / Validation**: Evaluated across 200 checkpoints: **0.00% deterministic safety violations, 0 credential breaches, 2 safety overrides applied, 100% deterministic credential protection verified**.
 
 ---
 
@@ -155,11 +155,11 @@
 
 ### Decision 14: Treating Same-Family LLM-as-a-Judge as Secondary and Diagnostic
 - **Context / Problem**: Automated LLM judges are increasingly popular for evaluating natural language responses, but using the same model family (`llama3.2:1b`) to grade its own output introduces severe self-preference bias.
-- **Chosen Approach**: Classified the LLM judge as strictly secondary/diagnostic, establishing **genuine human evaluation ($N=40$) as authoritative ground truth**.
-- **Why It Was Chosen**: Rigorous audit revealed that the LLM judge exhibited severe mode-collapse (awarding 4/5 indiscriminately), leniency (+0.41 composite inflation), and near-zero correlation with human judgment (QWK: 0.0309, Spearman: 0.0634).
+- **Chosen Approach**: Classified the LLM judge as strictly secondary/diagnostic, establishing **authoritative genuine human evaluation ([`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl), $N=40$, reviewed by `human_reviewer_1`) as ground truth**.
+- **Why It Was Chosen**: Rigorous recomputation from per-item scores revealed that the LLM judge exhibited severe leniency (**+2.01 composite inflation**, scoring 4.22 vs human 2.21), low adjacent agreement (**30.42%**), and near-zero rank correlation with human judgment (QWK: 0.0114, Spearman: 0.0497).
 - **Alternative Considered**: Presenting the 4.17/5.00 LLM judge score as primary proof of conversational excellence.
 - **Trade-off / Consequence**: Avoids inflated marketing claims and presents an honest, defensible evaluation of model quality.
-- **Evidence / Validation**: Documented blind spot in checkpoint `chk_4818c7c9`, where the LLM judge rated a premature canned closure as 4/5 while human review penalized it as unhelpful (1/5).
+- **Evidence / Validation**: Documented blind spot in checkpoint `chk_4818c7c9`, where the LLM judge rated a premature canned closure as 4/5 while human review penalized it as unhelpful (1/5). Exactly cataloged in [`results/phase7/phase7d_genuine_human_agreement.json`](../results/phase7/phase7d_genuine_human_agreement.json).
 
 ---
 

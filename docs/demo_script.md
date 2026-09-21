@@ -107,11 +107,11 @@ Generated Response: "You can initiate your return by visiting our Returns Center
 ```
 
 **Talking Point**:
-> *"Here is an example of our most common failure mode: `WRONG_ACTION`. The customer reported a broken link and a UPS dropoff rejection. The agent correctly identified `RETURN_INQUIRY`, but it repeated the canned instruction to visit the Returns Center rather than escalating the technical error. This explains why human helpfulness scored 3.30/5.00 compared to the lenient LLM judge (4.00/5.00). We don't hide these failure modes; they guide our engineering roadmap."*
+> *"Here is an example of our most common failure mode: `WRONG_ACTION`. The customer reported a broken link and a UPS dropoff rejection. The agent correctly identified `RETURN_INQUIRY`, but it repeated the canned instruction to visit the Returns Center rather than escalating the technical error. This explains why human helpfulness scored 2.10/5.00 compared to the lenient LLM judge (4.00/5.00). We don't hide these failure modes; they guide our engineering roadmap."*
 
 ---
 
 ## 6. Conclusion & Evaluation Summary (30 Seconds)
 
-> *"To summarize: Across our 200 evaluation checkpoints, the agent delivers 86.00% Intent Accuracy, 87.00% Action Accuracy, 0 safety violations, and 82.50% verified evidence-supported responses, running entirely on local CPU hardware in 1.66 seconds per turn. Post-fix genuine human evaluation ($N=40$) established a 3.76/5 response quality with 83.33% adjacent agreement to our secondary diagnostic LLM judge (4.17/5), demonstrating strong conversational safety and calibrated performance. Thank you, and I look forward to your questions!"*
+> *"To summarize: Across our 200 evaluation checkpoints, the agent delivers 86.00% Intent Accuracy, 87.00% Action Accuracy, 0 credential leaks, and 82.50% verified evidence-supported responses, running entirely on local CPU hardware in 1.66 seconds per turn. Authoritative genuine human evaluation ($N=40$, `data/evaluation/genuine_human_reviews_n40.jsonl`) established a 2.21/5.00 response quality, revealing a +2.01 leniency bias in our secondary diagnostic LLM judge (4.22/5.00 sample, 4.17 overall) with 30.42% adjacent agreement. This confirms deterministic safety enforcement while honestly revealing that genuine customers require concrete resolution over generic deflection. Thank you, and I look forward to your questions!"*
 

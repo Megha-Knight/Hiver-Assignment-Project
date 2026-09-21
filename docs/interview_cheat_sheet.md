@@ -73,22 +73,23 @@ In the verified final evaluation, **82.50% of responses were Evidence-Supported 
 - **Contradictory (0.00%)**: Zero hallucinations contradicting retrieved policy.
 Historical automated heuristics reported 99.50% "grounding" merely by checking for absence of prohibited tokens, which masked non-grounded generic generation.
 
-### 22. Why was the genuine human review score (3.76/5) lower than the same-family LLM judge score (4.17/5)?
-The local `llama3.2:1b` LLM judge is a **secondary, diagnostic tool, not ground truth**. Because it shares the same model family as the response generator, it exhibits substantial **leniency bias** (+0.41 composite inflation, scoring 4.17 vs human 3.76). It is substantially lenient on **Relevance** (scoring 4.88 vs human 3.42) and suffers from mode collapse (clustering at integer 4.0). In contrast, genuine human reviewers penalize non-specific troubleshooting, generic FAQ deflection, and partial address of compound customer inquiries.
+### 22. Why was the genuine human review score (2.21/5) lower than the same-family LLM judge score (4.22/5)?
+The local `llama3.2:1b` LLM judge is a **secondary, diagnostic tool, not ground truth**. Because it shares the same model family as the response generator, it exhibits severe **leniency bias** (+2.01 composite inflation, scoring 4.22 vs human 2.21). It is extremely lenient on **Relevance** (scoring 4.88 vs human 2.23) and **Safety** (scoring 4.70 vs human 2.10), awarding 4/5 or 5/5 to canned DM requests even when the customer's package is missing or unresolved. In contrast, genuine human reviewers severely penalize generic non-resolutions, canned deflections, and failure to address specific customer problems.
 
 ### 23. What did the genuine human evaluation and LLM judge calibration reveal?
-Across the completed post-fix genuine human evaluation ($N=40$ stratified across Easy, Medium, Hard), human expert composite was **3.76/5.00** vs the LLM judge's **4.17/5.00**:
-- **Adjacent Agreement ($\pm 1$ grade)**: **83.33%** (exact agreement: 59.17%)
-- **Quadratic Weighted Kappa (QWK)**: **0.0309**
-- **Spearman Correlation ($\rho$)**: **0.0634**
+Across the authoritative genuine human evaluation ([`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl), $N=40$ stratified across Easy, Medium, Hard; reviewed by `human_reviewer_1`), human composite was **2.21/5.00** (median 2.00) vs the LLM judge's **4.22/5.00** (median 4.33; 4.17 across all $N=200$):
+- **Exact Agreement Rate**: **7.92%** (19 / 240 dimension pairs)
+- **Adjacent Agreement ($\pm 1$ grade)**: **30.42%** (73 / 240 dimension pairs)
+- **Quadratic Weighted Kappa (QWK)**: **0.0114**
+- **Spearman Correlation ($\rho$)**: **0.0497**
 - **Dimension Breakdown**:
-  - **Relevance**: human **3.42** vs judge **4.88** (judge +1.46 lenient)
-  - **Helpfulness**: human **3.30** vs judge **4.00** (judge +0.70 lenient)
-  - **Groundedness**: human **3.58** vs judge **4.00** (judge +0.42 lenient)
-  - **Action Appropriateness**: human **3.40** vs judge **3.77** (judge +0.37 lenient)
-  - **Safety**: human **5.00** vs judge **4.70** (human confirmed 100% safety compliance)
-  - **Communication Quality**: human **3.85** vs judge **4.00** (judge +0.15 lenient)
-The near-zero rank correlation demonstrates that while adjacent agreement is high due to mode clustering, the automated judge cannot reliably rank-order response quality and must always be calibrated against genuine human reviews.
+  - **Relevance**: human **2.23** vs judge **4.88** (judge +2.65 lenient)
+  - **Helpfulness**: human **2.10** vs judge **4.00** (judge +1.90 lenient)
+  - **Groundedness**: human **2.15** vs judge **4.00** (judge +1.85 lenient)
+  - **Action Appropriateness**: human **2.03** vs judge **3.77** (judge +1.75 lenient)
+  - **Safety**: human **2.10** vs judge **4.70** (judge +2.60 lenient)
+  - **Communication Quality**: human **2.68** vs judge **4.00** (judge +1.33 lenient)
+The near-zero rank correlation (QWK: 0.0114, Spearman: 0.0497) and low adjacent agreement (30.42%) demonstrate that the automated same-family judge cannot reliably approximate human judgment and severely underestimates customer dissatisfaction with generic automated replies.
 
 ### 24. What is the biggest failure mode?
 `WRONG_STATE` (45/200 cases, 22.5%) and `WEAK_EVIDENCE_GROUNDING` (35/200 cases, 17.5%), followed by `ESCALATION_MISS` (30/200 cases, 15.0%), where the agent misjudges customer dialogue progression or relies on fallback templates when retrieval similarity is weak.

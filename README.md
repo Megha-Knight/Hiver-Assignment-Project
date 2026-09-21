@@ -293,26 +293,33 @@ We compare the hybrid agent against two classical baselines on the frozen 200-ch
 
 ## 13. Human Evaluation & LLM-as-Judge Comparison
 
-We conducted genuine human evaluations over a stratified sample ($N=40$; 10 Easy, 18 Medium, 12 Hard) and benchmarked against an automated local same-family LLM judge (`llama3.2:1b`):
+We evaluated the system against the sole authoritative genuine human review dataset ([`data/evaluation/genuine_human_reviews_n40.jsonl`](data/evaluation/genuine_human_reviews_n40.jsonl), $N=40$ stratified sample: 10 Easy, 18 Medium, 12 Hard; reviewed by `human_reviewer_1`) and benchmarked against the automated local same-family LLM judge (`llama3.2:1b` via `ResponseQualityJudge`):
 
 | Evaluation Dimension | Genuine Human Review ($N=40$) | LLM Judge ($N=40$, `llama3.2:1b`) | Discrepancy & Analysis |
 | :--- | :---: | :---: | :--- |
-| **Relevance** | 3.42 / 5.00 | 4.88 / 5.00 | +1.46 (Judge substantially lenient on customer question nuances) |
-| **Helpfulness** | 3.30 / 5.00 | 4.00 / 5.00 | +0.70 (Human penalizes generic non-resolutions and deflection) |
-| **Groundedness** | 3.58 / 5.00 | 4.00 / 5.00 | +0.42 (Judge mode-collapses at 4; human flags missing specifics) |
-| **Action Appropriateness** | 3.40 / 5.00 | 3.77 / 5.00 | +0.37 (Human penalizes premature closures and wrong routing) |
-| **Safety Compliance** | **5.00 / 5.00** | **4.70 / 5.00** | -0.30 (Human confirmed 100% safety compliance; 0 leaks) |
-| **Communication Quality** | 3.85 / 5.00 | 4.00 / 5.00 | +0.15 (High agreement on professional Twitter support tone) |
-| **Composite Quality Score** | **3.76 / 5.00** | **4.17 / 5.00** | **+0.41 Leniency Bias in LLM Judge** |
+| **Relevance** | **2.23 / 5.00** | 4.88 / 5.00 | +2.65 (Judge awards 5/5 to canned DM requests; human severely penalizes failing to address issue) |
+| **Helpfulness** | **2.10 / 5.00** | 4.00 / 5.00 | +1.90 (Judge treats generic deflection as helpful; human demands actionable resolution steps) |
+| **Groundedness** | **2.15 / 5.00** | 4.00 / 5.00 | +1.85 (Judge assumes standard policy plausibility; human flags lack of specific order facts) |
+| **Action Appropriateness** | **2.03 / 5.00** | 3.77 / 5.00 | +1.75 (Judge tolerates generic handoffs; human penalizes premature closing and repetitive loops) |
+| **Safety Compliance** | **2.10 / 5.00** | 4.70 / 5.00 | +2.60 (Judge awards 5/5 for zero password leaks; human strictly penalizes inadequate public routing) |
+| **Communication Quality** | **2.68 / 5.00** | 4.00 / 5.00 | +1.33 (Judge accepts standard polite boilerplate; human penalizes repetitive robotic phrasing) |
+| **Composite Quality Score** | **2.21 / 5.00** | **4.22 / 5.00** | **+2.01 Severe Leniency Bias in LLM Judge** (4.17 across all $N=200$) |
 
+### Agreement Statistics (Recomputed from Per-Item Scores):
+- **Exact Agreement Rate**: **7.92%** (19 / 240 dimension ratings)
+- **Adjacent Agreement (within $\pm 1$ grade)**: **30.42%** (73 / 240 dimension ratings)
+- **Mean Quadratic Weighted Kappa (QWK)**: **0.0114**
+- **Mean Spearman Rank Correlation ($\rho$)**: **0.0497**
 
-### Agreement Statistics:
-- **Adjacent Agreement (within $\pm 1$ grade)**: **83.33%**
-- **Quadratic Weighted Kappa (QWK)**: **0.0309**
-- **Spearman Rank Correlation**: **0.0634**
+### Evaluation Provenance Disclosure:
+- **Authoritative Genuine Human Review**: [`data/evaluation/genuine_human_reviews_n40.jsonl`](data/evaluation/genuine_human_reviews_n40.jsonl) ($N=40$, reviewer: `human_reviewer_1`, `review_status="REVIEWED"`, verified UTC timestamps).
+- **Review Packet**: [`data/evaluation/human_review_packet_n40.jsonl`](data/evaluation/human_review_packet_n40.jsonl) ($N=40$ blinded records stripped of gold labels).
+- **Authoritative Agreement Statistics**: [`results/phase7/phase7d_genuine_human_agreement.json`](results/phase7/phase7d_genuine_human_agreement.json) (recomputed deterministically from per-item scores without previous agreement files).
+- **Automated Heuristic Audit**: [`data/evaluation/human_reviews_n40.jsonl`](data/evaluation/human_reviews_n40.jsonl) ($N=40$, preserved automated rule baseline, marked `reviewer_id="heuristic_rule_adjudicator"`, `review_status="NOT_HUMAN_REVIEWED"`).
+- **Automated LLM-as-Judge Benchmark**: [`results/phase7/phase7c_response_quality.json`](results/phase7/phase7c_response_quality.json) ($N=200$, `llama3.2:1b`, composite mean: 4.17 / 5.00).
 
 > [!WARNING]
-> **LLM Judge Independence Finding**: The local `llama3.2:1b` judge is **not an independent evaluator**. It shares model family biases with the generator, exhibits severe leniency (+0.41 points composite), and displays near-zero rank correlation with human judgment (QWK: 0.0309). The automated judge must be treated as **secondary and diagnostic only**.
+> **LLM Judge Independence Finding**: The local `llama3.2:1b` judge is **not an independent evaluator**. It exhibits severe leniency bias (**+2.01 composite inflation**), awards near-ceiling scores to canned deflections, and displays near-zero rank correlation with human judgment (QWK: 0.0114, Spearman: 0.0497). The automated judge must be treated as **secondary and diagnostic only**; genuine human review reflects the true production customer experience.
 
 ---
 
@@ -351,7 +358,7 @@ In autonomous customer support, reporting high classification accuracy can creat
 2. **Escalation Recall is only 33.33% (FAHR: 66.67%)**: The system misses **30 out of 45 true escalations**, attempting autonomous resolution when human intervention is required. In customer care, a false auto-handle is significantly more damaging than a false escalation.
 3. **Four-Field Exact Match Drops to 25.00% on Hard Cases**: Under the strict joint criterion where **Intent + State + Action + Escalation must all match simultaneously**, success is **59.50% overall** and collapses to **25.00% on complex multi-turn edge cases**.
 4. **82.5% Evidence Support is NOT 99.5% Grounded Factual Certainty**: Historical automated heuristics reported 99.5% "grounding" by checking for prohibited tokens. Post-fix evaluation demonstrates that **only 46.5% is direct exemplar support**, while **36.0% is procedural alignment** and **17.5% is unsupported**.
-5. **LLM Judge Inflates Response Quality (+0.41)**: The 4.17/5.00 LLM-as-judge score reflects same-family model leniency; genuine human evaluation scored the system at **3.76/5.00**.
+5. **LLM Judge Inflates Response Quality (+2.01)**: The 4.22/5.00 LLM-as-judge score (4.17 across all 200 checkpoints) reflects severe same-family model leniency; authoritative genuine human evaluation scored the system at **2.21/5.00** (median 2.00) due to generic deflection and failure to address nuanced customer inquiries.
 
 ---
 

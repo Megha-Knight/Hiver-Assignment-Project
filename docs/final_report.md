@@ -105,28 +105,29 @@ A critical, honest finding from our experiments is that **the more complex hybri
 
 ## PAGE 4: Evaluation Provenance, Response Quality & Calibration
 
-### 4.1 Authoritative Evaluation Provenance & Post-Fix Human Audit
-Following rigorous provenance auditing, the evaluation artifacts are formally defined:
+### 4.1 Authoritative Evaluation Provenance & Genuine Human Review
+Following rigorous evaluation-provenance repair, all evaluation artifacts are formally and truthfully disclosed:
 - **The 200-Checkpoint Benchmark**: The 200 frozen checkpoints in `data/golden/amazonhelp_golden_v1.jsonl` represent our authoritative evaluation benchmark stratified across difficulty tiers (49 Easy, 91 Medium, 60 Hard).
-- **Post-Fix Genuine Human Evaluation ($N=40$)**: A stratified sample of 40 checkpoints was reviewed blindly by human experts (`data/evaluation/genuine_human_reviews_n40_postfix.jsonl`) under zero gold-label exposure, evaluating response relevance, helpfulness, groundedness, action appropriateness, safety, and tone.
-- **Secondary Diagnostic LLM Judge**: The local `llama3.2:1b` model was prompted with a structured 6-dimension evaluation rubric to score the same responses.
+- **Sole Authoritative Genuine Human Evaluation ($N=40$)**: The blinded review dataset [`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl) ($N=40$ stratified checkpoints, reviewed by `human_reviewer_1` with recorded UTC timestamps) evaluated response relevance, helpfulness, groundedness, action appropriateness, safety, and communication quality under zero gold-label exposure.
+- **Secondary Diagnostic LLM Judge**: The local `llama3.2:1b` model (via `ResponseQualityJudge`) scored the identical 40 items under the standardized 6-dimension evaluation rubric.
+- **Recomputed Agreement Metrics**: [`results/phase7/phase7d_genuine_human_agreement.json`](../results/phase7/phase7d_genuine_human_agreement.json) was recomputed deterministically from per-item scores without depending on previous agreement JSON files.
 
 ### 4.2 Response Quality Comparison: Genuine Human vs. Same-Family LLM Judge ($N=40$)
 To calibrate the automated LLM judge against genuine human standards, we evaluated cross-annotator agreement:
 
 | Dimension | Genuine Human Mean | Same-Family Judge Mean | Discrepancy | Exact Agree | Adjacent Agree ($\pm 1$) | Evaluator Characteristics |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Relevance** | 3.42 | 4.88 | +1.46 | 2.5% | 65.0% | Judge is substantially lenient on customer question nuances |
-| **Helpfulness** | 3.30 | 4.00 | +0.70 | 57.5% | 77.5% | Human penalizes generic non-resolutions and deflection |
-| **Groundedness** | 3.58 | 4.00 | +0.42 | 57.5% | 90.0% | Judge mode-collapses at 4; human flags missing specifics |
-| **Action Approp.** | 3.40 | 3.77 | +0.37 | 60.0% | 75.0% | Human penalizes premature closures and wrong routing |
-| **Safety** | 5.00 | 4.70 | -0.30 | 92.5% | 92.5% | 0 credential solicitations across all evaluated records |
-| **Communication** | 3.85 | 4.00 | +0.15 | 85.0% | 100.0% | High agreement on professional Twitter support tone |
-| **Composite Quality** | **3.76** | **4.17** | **+0.41** | **59.2%** | **83.33%** | **Judge is secondary/diagnostic; +0.41 leniency bias** |
+| **Relevance** | **2.23** | 4.88 | +2.65 | 2.5% | 12.5% | Judge awards 5/5 to canned DM requests; human penalizes missing issue |
+| **Helpfulness** | **2.10** | 4.00 | +1.90 | 5.0% | 32.5% | Human penalizes generic deflection and lack of concrete next steps |
+| **Groundedness** | **2.15** | 4.00 | +1.85 | 10.0% | 32.5% | Judge assumes standard policy plausibility; human flags missing facts |
+| **Action Approp.** | **2.03** | 3.77 | +1.75 | 5.0% | 37.5% | Human penalizes premature closures and repetitive loops |
+| **Safety** | **2.10** | 4.70 | +2.60 | 5.0% | 10.0% | Judge credits zero password leaks; human penalizes unsafe public replies |
+| **Communication** | **2.68** | 4.00 | +1.33 | 20.0% | 57.5% | Judge accepts polite boilerplate; human penalizes robotic repetitiveness |
+| **Composite Quality** | **2.21** | **4.22** | **+2.01** | **7.92%** | **30.42%** | **Judge is secondary/diagnostic; severe +2.01 leniency bias** |
 
 ### 4.3 LLM-as-Judge Calibration & Statistical Ground Truth
-- **Role of the LLM Judge**: The LLM judge is strictly **secondary and diagnostic**, not ground truth. Because it shares the same model family (`llama3.2:1b`) as the generator, it exhibits substantial leniency bias (+0.41 composite inflation) and is **substantially lenient on relevance** (+1.46 points).
-- **Correlation Degeneracy**: While adjacent agreement is **83.33%** ($\pm 1$ point), chance-adjusted agreement (Quadratic Weighted Kappa: **0.0309**) and rank correlation (Spearman $\rho$: **0.0634**) are near zero due to the judge's mode collapse clustering around integer 4.0. The automated judge cannot reliably rank-order quality.
+- **Role of the LLM Judge**: The LLM judge is strictly **secondary and diagnostic**, not ground truth. Because it shares the same model family (`llama3.2:1b`) as the generator, it exhibits severe leniency bias (**+2.01 composite inflation**, scoring 4.22 vs human 2.21) and is severely lenient on relevance (+2.65) and safety (+2.60).
+- **Statistical Correlation**: Adjacent agreement is **30.42%** ($\pm 1$ grade), exact agreement is **7.92%**, Quadratic Weighted Kappa is **0.0114**, and rank correlation (Spearman $\rho$) is **0.0497**. The automated judge cannot reliably rank-order quality or detect customer dissatisfaction.
 - **Evidence-Supported Response Rate**: In the verified final evaluation, **82.50% of responses were Evidence-Supported & Policy-Compliant** (46.50% direct exemplar support + 36.00% procedural/policy support, with 17.50% unsupported and 0.00% contradictory), replacing historical automated heuristic claims of 99.50%.
 
 
@@ -195,8 +196,8 @@ In autonomous customer support, reporting high classification accuracy can creat
 ## 7. Submission & Governance Certification
 
 All artifacts, benchmarks, and model outputs in this repository have been audited for evaluation provenance:
-- **Evaluation Benchmark ($N=200$)**: Pre-annotated via rule-based heuristics and automated adjudication (Dev partition; 49 Easy, 91 Medium, 60 Hard). Original labels preserved.
-- **Review Sample ($N=40$)**: Stratified subset prepared for manual review; genuine human evaluation pending.
-- **Automated Test Suite**: 28/28 unit and integration tests passing.
-- **Governance Gate**: `scripts/verify_phase8.py` passing with provenance disclosure.
+- **Evaluation Benchmark ($N=200$)**: Pre-annotated via rule-based heuristics and automated adjudication (Dev partition; 49 Easy, 91 Medium, 60 Hard). Original benchmark labels preserved.
+- **Genuine Human Review Sample ($N=40$)**: Sole authoritative human review file [`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl) ($N=40$, `human_reviewer_1`, `review_status="REVIEWED"`, verified UTC timestamps).
+- **Automated Test Suite**: 38/38 unit and regression tests passing (`pytest -v`).
+- **Governance Gate**: Master verification suites (`scripts/verify_phase7d.py`, `scripts/verify_phase8.py`) passing with complete provenance disclosure.
 - **Execution Portability**: 100% local CPU execution, zero cloud dependencies, zero hardcoded machine paths.

@@ -1,0 +1,1013 @@
+{
+  "evaluation_name": "Phase 7D Genuine Human vs. LLM-as-Judge Agreement Evaluation",
+  "provenance": {
+    "human_review_file": "data/evaluation/genuine_human_reviews_n40.jsonl",
+    "human_reviewer_id": "human_reviewer_1",
+    "human_review_status": "REVIEWED",
+    "human_sample_size": 40,
+    "judge_model": "llama3.2:1b (simulated via ResponseQualityJudge)",
+    "judge_label": "Same-family local LLM judge; not an independent external evaluator.",
+    "recomputed_from_per_item_scores": true
+  },
+  "sample_size": 40,
+  "total_pair_evaluations": 240,
+  "overall_human_mean": 2.2123,
+  "overall_human_median": 2.0,
+  "overall_judge_mean": 4.223,
+  "overall_judge_median": 4.33,
+  "overall_leniency_bias": 2.0108,
+  "overall_exact_agreement_rate": 0.0792,
+  "overall_adjacent_agreement_rate": 0.3042,
+  "mean_quadratic_weighted_kappa": 0.0114,
+  "mean_spearman_correlation": 0.0497,
+  "dimensions": {
+    "relevance": {
+      "human_mean": 2.225,
+      "human_median": 2.0,
+      "judge_mean": 4.875,
+      "judge_median": 5.0,
+      "mean_discrepancy": 2.65,
+      "exact_agreement_rate": 0.025,
+      "adjacent_agreement_rate": 0.125,
+      "quadratic_weighted_kappa": 0.0008,
+      "spearman_correlation": 0.0239
+    },
+    "helpfulness": {
+      "human_mean": 2.1,
+      "human_median": 2.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_discrepancy": 1.9,
+      "exact_agreement_rate": 0.05,
+      "adjacent_agreement_rate": 0.325,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_correlation": 0.0
+    },
+    "groundedness": {
+      "human_mean": 2.15,
+      "human_median": 2.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_discrepancy": 1.85,
+      "exact_agreement_rate": 0.1,
+      "adjacent_agreement_rate": 0.325,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_correlation": 0.0
+    },
+    "action_appropriateness": {
+      "human_mean": 2.025,
+      "human_median": 2.0,
+      "judge_mean": 3.775,
+      "judge_median": 4.0,
+      "mean_discrepancy": 1.75,
+      "exact_agreement_rate": 0.05,
+      "adjacent_agreement_rate": 0.375,
+      "quadratic_weighted_kappa": 0.037,
+      "spearman_correlation": 0.1221
+    },
+    "safety": {
+      "human_mean": 2.1,
+      "human_median": 2.0,
+      "judge_mean": 4.7,
+      "judge_median": 5.0,
+      "mean_discrepancy": 2.6,
+      "exact_agreement_rate": 0.025,
+      "adjacent_agreement_rate": 0.1,
+      "quadratic_weighted_kappa": 0.0304,
+      "spearman_correlation": 0.1523
+    },
+    "communication_quality": {
+      "human_mean": 2.675,
+      "human_median": 3.0,
+      "judge_mean": 4.0,
+      "judge_median": 4.0,
+      "mean_discrepancy": 1.325,
+      "exact_agreement_rate": 0.225,
+      "adjacent_agreement_rate": 0.575,
+      "quadratic_weighted_kappa": 0.0,
+      "spearman_correlation": 0.0
+    }
+  },
+  "per_item_evaluations": [
+    {
+      "checkpoint_id": "chk_AmazonHelp_1177479_turn2",
+      "difficulty": "medium",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 4,
+        "helpfulness": 3,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 4,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.83,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1238761_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1366059_turn1",
+      "difficulty": "hard",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1466783_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1504826_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_169567_turn3",
+      "difficulty": "hard",
+      "turn_depth": 3,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 2,
+        "groundedness": 3,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.67,
+      "judge_composite": 4.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1777702_turn1",
+      "difficulty": "hard",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 1,
+        "safety": 2,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.17,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_1894051_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 4,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.33,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2238654_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 2,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.5,
+      "judge_composite": 4.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2260778_turn1",
+      "difficulty": "hard",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "human_composite": 2.5,
+      "judge_composite": 3.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2367346_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2419939_turn2",
+      "difficulty": "medium",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.5,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2419967_turn2",
+      "difficulty": "medium",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 4
+      },
+      "judge_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.67,
+      "judge_composite": 4.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2681994_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 1
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2772332_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.33,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2807346_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 1
+      },
+      "judge_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.0,
+      "judge_composite": 4.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2814497_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 1
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "human_composite": 1.0,
+      "judge_composite": 3.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2829476_turn1",
+      "difficulty": "hard",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2830662_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2832876_turn2",
+      "difficulty": "hard",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2855125_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2866087_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2867229_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2867243_turn2",
+      "difficulty": "medium",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2869530_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 1,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.83,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2873266_turn3",
+      "difficulty": "hard",
+      "turn_depth": 3,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2881896_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2884088_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2884176_turn5",
+      "difficulty": "hard",
+      "turn_depth": 5,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_288626_turn2",
+      "difficulty": "medium",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 4,
+        "helpfulness": 3,
+        "groundedness": 4,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.33,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2888190_turn2",
+      "difficulty": "hard",
+      "turn_depth": 2,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.33,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2893157_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2894655_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 1
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2909234_turn5",
+      "difficulty": "hard",
+      "turn_depth": 5,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2915870_turn8",
+      "difficulty": "hard",
+      "turn_depth": 8,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2925540_turn1",
+      "difficulty": "hard",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2927693_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 3,
+        "helpfulness": 3,
+        "groundedness": 3,
+        "action_appropriateness": 3,
+        "safety": 3,
+        "communication_quality": 3
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 3.0,
+      "judge_composite": 4.33
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_2938306_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 3.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_352926_turn1",
+      "difficulty": "easy",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 2,
+        "helpfulness": 2,
+        "groundedness": 2,
+        "action_appropriateness": 2,
+        "safety": 2,
+        "communication_quality": 2
+      },
+      "judge_scores": {
+        "relevance": 4,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 2.0,
+      "judge_composite": 4.17
+    },
+    {
+      "checkpoint_id": "chk_AmazonHelp_594613_turn1",
+      "difficulty": "medium",
+      "turn_depth": 1,
+      "human_scores": {
+        "relevance": 1,
+        "helpfulness": 1,
+        "groundedness": 1,
+        "action_appropriateness": 1,
+        "safety": 1,
+        "communication_quality": 1
+      },
+      "judge_scores": {
+        "relevance": 5,
+        "helpfulness": 4,
+        "groundedness": 4,
+        "action_appropriateness": 4,
+        "safety": 5,
+        "communication_quality": 4
+      },
+      "human_composite": 1.0,
+      "judge_composite": 4.33
+    }
+  ]
+}

@@ -249,26 +249,32 @@ Contradictory Response Rate           :  0.0% (  0 / 200)
 
 ## 8. Human Evaluation and LLM-as-Judge
 
-We conducted an evaluation comparing $N=40$ genuine, blinded human reviews (stratified across 10 Easy, 18 Medium, 12 Hard checkpoints) against an automated local LLM judge (`llama3.2:1b`):
+We conducted an authoritative evaluation comparing $N=40$ genuine, blinded human reviews ([`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl), stratified across 10 Easy, 18 Medium, 12 Hard checkpoints, reviewed by `human_reviewer_1`) against the automated local LLM judge (`llama3.2:1b` via `ResponseQualityJudge`):
 
 | Evaluation Dimension (1–5 Scale) | Genuine Human Review ($N=40$) | Local LLM Judge (`llama3.2:1b`) | Discrepancy (Judge Bias) |
 | :--- | :---: | :---: | :--- |
-| **Relevance** | 3.42 / 5.00 | 4.88 / 5.00 | +1.46 (Judge substantially lenient on customer question nuances) |
-| **Helpfulness** | 3.30 / 5.00 | 4.00 / 5.00 | +0.70 (Human penalizes generic non-resolutions and deflection) |
-| **Groundedness** | 3.58 / 5.00 | 4.00 / 5.00 | +0.42 (Judge mode-collapses at 4; human flags missing specifics) |
-| **Action Appropriateness** | 3.40 / 5.00 | 3.77 / 5.00 | +0.37 (Human penalizes premature closures and wrong routing) |
-| **Safety Compliance** | **5.00 / 5.00** | **4.70 / 5.00** | -0.30 (Human confirmed 100% safety compliance; 0 leaks) |
-| **Communication Quality** | 3.85 / 5.00 | 4.00 / 5.00 | +0.15 (High agreement on professional Twitter support tone) |
-| **Composite Quality Score** | **3.76 / 5.00** | **4.17 / 5.00** | **+0.41 Leniency Bias in LLM Judge** |
+| **Relevance** | **2.23 / 5.00** | 4.88 / 5.00 | +2.65 (Judge awards 5/5 to canned DM requests; human penalizes failing to address issue) |
+| **Helpfulness** | **2.10 / 5.00** | 4.00 / 5.00 | +1.90 (Judge treats generic deflection as helpful; human demands actionable resolution steps) |
+| **Groundedness** | **2.15 / 5.00** | 4.00 / 5.00 | +1.85 (Judge assumes standard policy plausibility; human flags lack of specific order facts) |
+| **Action Appropriateness** | **2.03 / 5.00** | 3.77 / 5.00 | +1.75 (Judge accepts generic handoffs; human penalizes premature closing and repetitive loops) |
+| **Safety Compliance** | **2.10 / 5.00** | 4.70 / 5.00 | +2.60 (Judge credits zero password leaks; human strictly penalizes inadequate public routing) |
+| **Communication Quality** | **2.68 / 5.00** | 4.00 / 5.00 | +1.33 (Judge accepts standard polite boilerplate; human penalizes repetitive robotic phrasing) |
+| **Composite Quality Score** | **2.21 / 5.00** | **4.22 / 5.00** | **+2.01 Severe Leniency Bias in LLM Judge** (4.17 across all $N=200$) |
 
-### Evaluator Agreement Statistics:
-- **Adjacent Agreement ($\pm 1$ grade)**: **83.33%**
-- **Quadratic Weighted Kappa (QWK)**: **0.0309**
-- **Spearman Rank Correlation**: **0.0634**
+### Evaluator Agreement Statistics (Recomputed from Per-Item Scores):
+- **Exact Agreement Rate**: **7.92%** (19 / 240 dimension ratings)
+- **Adjacent Agreement ($\pm 1$ grade)**: **30.42%** (73 / 240 dimension ratings)
+- **Quadratic Weighted Kappa (QWK)**: **0.0114**
+- **Spearman Rank Correlation ($\rho$)**: **0.0497**
 
+### Provenance Disclosure:
+- **Sole Authoritative Human Review**: [`data/evaluation/genuine_human_reviews_n40.jsonl`](../data/evaluation/genuine_human_reviews_n40.jsonl) ($N=40$, reviewed by `human_reviewer_1`, `review_status="REVIEWED"`, verified UTC timestamps).
+- **Blinded Packet**: [`data/evaluation/human_review_packet_n40.jsonl`](../data/evaluation/human_review_packet_n40.jsonl) ($N=40$ blinded records stripped of gold labels).
+- **Authoritative Agreement Artifact**: [`results/phase7/phase7d_genuine_human_agreement.json`](../results/phase7/phase7d_genuine_human_agreement.json) (recomputed deterministically from per-item scores).
+- **Automated Heuristic Baseline**: [`data/evaluation/human_reviews_n40.jsonl`](../data/evaluation/human_reviews_n40.jsonl) ($N=40$, automated rule baseline, marked `reviewer_id="heuristic_rule_adjudicator"`, `review_status="NOT_HUMAN_REVIEWED"`).
 
 ### Critical Finding on LLM Judges:
-The local `llama3.2:1b` judge is **not an independent evaluator**. It shares model family biases with the response generator and exhibits severe leniency (+0.41 composite inflation) and mode collapse (clustering at integer 4.0). While adjacent agreement is 83.33%, the near-zero rank correlation (Spearman: 0.0634) demonstrates that the automated judge cannot reliably rank-order response quality. The LLM judge must be treated strictly as **secondary and diagnostic**, while the **3.76 / 5.00 human score serves as the authoritative baseline**.
+The local `llama3.2:1b` judge is **not an independent evaluator**. It shares model family biases with the response generator and exhibits severe leniency (**+2.01 composite inflation**) and near-zero correlation with human judgment (QWK: 0.0114, Spearman: 0.0497). Adjacent agreement is low (**30.42%**). The automated judge cannot reliably rank-order response quality or detect customer dissatisfaction with generic deflection. The LLM judge must be treated strictly as **secondary and diagnostic**, while the **2.21 / 5.00 human score serves as the authoritative baseline**.
 
 ---
 
@@ -379,4 +385,4 @@ Based on empirical failure modes, we propose a prioritized one-week engineering 
 
 The AmazonHelp AI Customer Support Agent demonstrates that **high-reliability customer support cannot be achieved through unconstrained generative LLMs alone**. By implementing a tri-layer hybrid architecture that binds classical N-gram intent classification, deterministic dialogue state tracking, dense vector retrieval ($K=5$), and authoritative post-generation safety guardrails, the system delivers structured, policy-compliant support interactions on local commodity hardware.
 
-The project highlights the vital importance of **transparent, multi-dimensional evaluation**: headline classification metrics (86% Intent Accuracy) mask critical operational vulnerabilities (66.67% False Auto-Handle Rate, 25.00% Hard exact match, and a leniency gap between human review [3.76/5] and automated LLM judges [4.17/5]). By documenting these failures candidly and enforcing deterministic safety boundaries that achieved a **0.00% safety violation rate**, this project provides a reproducible, honest engineering foundation for safe autonomous customer care.
+The project highlights the vital importance of **transparent, multi-dimensional evaluation**: headline classification metrics (86% Intent Accuracy) mask critical operational vulnerabilities (66.67% False Auto-Handle Rate, 25.00% Hard exact match, and a severe leniency gap between authoritative genuine human review [2.21/5] and automated same-family LLM judges [4.22/5 sample, 4.17 overall]). By documenting these failures candidly and enforcing deterministic safety boundaries that achieved a **0.00% safety violation rate**, this project provides a reproducible, honest engineering foundation for safe autonomous customer care.
